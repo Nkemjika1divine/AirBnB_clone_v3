@@ -16,7 +16,7 @@ def teardown(exception):
     storage.close()
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     """runs the file"""
     host = os.getenv("HBNB_API_HOST")
     if host is None:
