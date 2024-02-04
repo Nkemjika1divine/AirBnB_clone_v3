@@ -13,7 +13,7 @@ app.register_blueprint(app_views)
 def not_found(error):
     """Handles the error message '404: not found'"""
     message = {
-            "error": "not found"
+            "error": "Not found"
         }
     return jsonify(message)
 
