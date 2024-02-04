@@ -8,6 +8,7 @@ def status():
     """get api status"""
     return {"status": "OK"}
 
+
 @app_views.route("/stats")
 def stats():
     """gets the number of all classes"""
