@@ -77,23 +77,10 @@ class DBStorage:
 
     def get(self, cls, id):
         """Returns the object based on class & its ID, or None if not found"""
-        objs = self.all()
-        class_id = "{}.{}".format(cls, id)
-        if class_id in objs:
-            return objs[class_id]
-        else:
-            return
+        cls_objs = self.all(cls)
+        return cls_objs.get(cls.__name__ + '.' + id)
 
     def count(self, cls=None):
         """Counts the occurence of a class in the database"""
-        objs = self.all()
-        count = 0
-
-        if cls:
-            for key, value in objs:
-                obj_cls = key.split(".")[0]
-                if obj_cls == cls:
-                    count += 1
-            return count
-        else:
-            return len(objs)
+        cls_objs = self.all(cls)
+        return len(cls_objs)
