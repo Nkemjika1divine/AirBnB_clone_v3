@@ -55,3 +55,13 @@ def put_state(state_id):
             setattr(state, key, value)
     state.save()
     return jsonify(state.to_dict())
+
+
+@app_views.route('/states/<state_id>', methods=['DELETE'])
+def delete_state(state_id):
+    """Deletes a state"""
+    try:
+        storage.delete(storage.get('State', state_id))
+        return jsonify({}), 200
+    except Exception:
+        abort(404)
